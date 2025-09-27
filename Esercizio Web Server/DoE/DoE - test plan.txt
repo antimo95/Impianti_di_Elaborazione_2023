@@ -1,0 +1,19 @@
+DoE - test plan 
+
+Usable Capacity: 1500 req/min
+
+Intensity Factor: 
+Level 1: low intensity (25% usable capacity) : 375 req/min
+Level 2: high intensity (75% usable capacity) : 1125 req/min
+
+Page Type Factor:
+Level 1: small size page : 50 - 100 - 150 - 200 - 250 KB
+Level 2: small-medium size page: 500 - 550 - 600 - 650 - 700 KB
+Level 3: medium-large size page: 1000 - 1050 - 1100 - 1150 - 1200 KB
+Level 4: large size page: 1800 - 1850 - 1900 - 1950 - 2000 KB
+
+5 repetitions for 1 minute
+
+Response Variable
+Response time: average elapsed time with the first factor at level j and the second factor at level i during the k-th repetition
+

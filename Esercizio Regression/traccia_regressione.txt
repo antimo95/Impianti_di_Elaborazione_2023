@@ -1,0 +1,7 @@
+Esercizio 1: Rilevare e stimare eventuali trend su ognuna delle tre variabili nmail, byte rec e byte sent, utilizzando modelli regressivi lineari semplici, parametrici e/o non parametrici (EXP1 e EXP2).
+
+Esercizio 2: Rilevare e stimare eventuali trend sulle 5 variabili utilizzando modelli regressivi lineari semplici, parametrici e/o non parametrici. Farlo per i tre dataset os1, os2 e os3. Confrontare i trend individuati nei tre dataset. 
+
+Esercizio 3: Supponendo di avere un limite massimo alla memoria heap di 1 GByte. Rilevare un eventuale trend di consumo dello heap nell'esperimento in figura. Se rilevato il trend, stimare il tempo  in cui lo heap satura (failure prediction).
+(VMres1, VMres2, VMres3).
+

@@ -1,0 +1,21 @@
+Esercizio 1 su EXP1:
+
+Fit group su nmail, byte rec, byte sent: si fa un linear fit su tutte e tre le variabili e si guarda l'R-quadro.
+
+L'R-quadro misura il legame tra la variabilità dei dati e la correttezza del modello statistico utilizzato. Nel nostro caso si può notare (anche visivamente) che la correttezza è bassa e quindi il modello regressivo si adatta poco ai dati. Tuttavia si vuole utilizzare il modello per fare trend detection dunque anche un piccolo R-quadro è sufficiente. Occorre però verificare la significatività dei parametri della retta regressiva tramite un test statistico.
+
+SCREEN DEL GROUP FIT 
+
+R-quadro per nmail: 8.684e-7
+R-quadro per byte rec: 0.000164
+R-quadro per byte sent: 0.000406
+
+Per scegliere il test bisogna valutare la distribuzione dei residui delle singole variabili. L'ipotesi di normalità dei residui implica che le differenze tra i valori previsti dal modello e i valori osservati nei dati seguano una distribuzione normale. Se non è così si utilizza un test non parametrico, ossia Mann-Kendall.
+
+SCREEN DEI QQPLOT
+
+Possiamo vedere che il QQPLOT presenta una coda che corrisponde a una serie di outliers. Filtrando questi dati, possiamo confermare le assunzioni del modello regressivo, di conseguenza facendo un test sulla media, il coefficiente della retta (la pendenza) della popolazione si può dire che al 95% di probabilità non include lo zero nel caso di byte sent. 
+
+Nel caso delle altre variabili, non ci sono trend significativi.
+
+

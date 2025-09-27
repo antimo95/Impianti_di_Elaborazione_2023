@@ -1,0 +1,49 @@
+Esercizio 7 su VMres2:
+
+Fit group su Allocated Heap: si fa un linear fit sulla variabile e si guarda l'R-quadro.
+
+L'R-quadro misura il legame tra la variabilità dei dati e la correttezza del modello statistico utilizzato. Nel nostro caso si può notare (anche visivamente) che la correttezza è bassa e quindi il modello regressivo si adatta poco ai dati. Tuttavia si vuole utilizzare il modello per fare trend detection dunque anche un piccolo R-quadro è sufficiente. Occorre però verificare la significatività dei parametri della retta regressiva tramite un test statistico.
+
+SCREEN DEL GROUP FIT 
+
+R-quadro per Allocated Heap: 0.024828
+
+Per scegliere il test bisogna valutare la distribuzione dei residui delle singola variabile. L'ipotesi di normalità dei residui implica che le differenze tra i valori previsti dal modello e i valori osservati nei dati seguano una distribuzione normale. Se non è così si utilizza un test non parametrico, ossia Mann-Kendall.
+
+SCREEN DEI QQPLOT
+
+Possiamo vedere che la distribuzione non è normale quindi automaticamente si può applicare un test non parametrico (Mann-Kendall).
+Il test calcola il coefficiente di correlazione t (tau) con valori che vanno da -1 e 1 e un p-value. Se il valore di t è negativo indica che le variabili sono inversamente correlate, se è positivo allora c'è una diretta proporzionalità. L'ipotesi nulla:
+
+H0: non è presente un trend monotono nella distribuzione
+
+Se il p-value è <= 0.05 significa che il risultato è statisticamente significativo per l'analisi pertanto l'ipotesi è rigettata.
+
+SCREEN TEST DI KENDALL
+
+Allocated Heap -> t:0.1378 p: 0.0001 TREND PROPORZIONALE
+
+Infine di può calcolare la pendenza e l'intercetta della retta di regressione utilizzando la procedura di Theil-Sen, ossia una regressione robusta progettata per fornire risultati più precisi e affidabili in presenza di valori outlier nei dati.
+
+Allocated Heap
+Pendenza: 0.6709499304572171
+Intervallo di confidenza al 95%: [0.6048638415610893,0.7366538131962297]
+Intercetta: 5780180.563324536
+
+
+L'intervallo di confidenza al 95% relativo alla pendenza della retta di regressione non include lo zero dunque la pendenza relativa al modello della popolazione ha una probabilità del 95% che non sia significativamente uguale a zero.
+
+E l'intercetta? 
+
+FAILURE PREDICTION
+
+la prediction della failure è: 
+
+allocatedheap = b0 + b1*T(s) con allocatedheap che rappresenta il limite massimo di saturazione della memoria heap (1 GB), b0 è l'intercetta e b1 è la pendenza.
+
+T(S) = (max heap - b0) / b1 
+
+DA APPROFONDIRE
+
+
+

@@ -1,0 +1,47 @@
+Esercizio 2 su EXP2:
+
+Fit group su nmail, byte rec, byte sent: si fa un linear fit su tutte e tre le variabili e si guarda l'R-quadro.
+
+L'R-quadro misura il legame tra la variabilità dei dati e la correttezza del modello statistico utilizzato. Nel nostro caso si può notare (anche visivamente) che la correttezza è bassa e quindi il modello regressivo si adatta poco ai dati. Tuttavia si vuole utilizzare il modello per fare trend detection dunque anche un piccolo R-quadro è sufficiente. Occorre però verificare la significatività dei parametri della retta regressiva tramite un test statistico.
+
+SCREEN DEL GROUP FIT 
+
+R-quadro per nmail: 0.020013
+R-quadro per byte rec: 0.012592
+R-quadro per byte sent: 0.034134
+
+Per scegliere il test bisogna valutare la distribuzione dei residui delle singole variabili. L'ipotesi di normalità dei residui implica che le differenze tra i valori previsti dal modello e i valori osservati nei dati seguano una distribuzione normale. Se non è così si utilizza un test non parametrico, ossia Mann-Kendall.
+
+SCREEN DEI QQPLOT
+
+Possiamo vedere che le distribuzioni non sono normali (anche dall'istogramma) quindi automaticamente si può applicare un test non parametrico (Mann-Kendall).
+Il test calcola il coefficiente di correlazione t (tau) con valori che vanno da -1 e 1 e un p-value. Se il valore di t è negativo indica che le variabili sono inversamente correlate, se è positivo allora c'è una diretta proporzionalità. L'ipotesi nulla:
+
+H0: non è presente un trend monotono nella distribuzione
+
+Se il p-value è <= 0.05 significa che il risultato è statisticamente significativo per l'analisi pertanto l'ipotesi è rigettata.
+
+SCREEN TEST DI KENDALL
+
+Nmail -> t: -0.0242 p: 0.0138 ESISTE UN TREND (INVERSAMENTE PROPORZIONALE)
+Byte rec ->  t: -0.0316 p: 0.0012 ESISTE UN TREND (INVERSAMENTE PROPORZIONALE)
+Byte sent -> t: -0.0392 p: 0.0001 ESISTE UN TREND (INVERSAMENTE PROPORZIONALE)
+
+Infine di può calcolare la pendenza e l'intercetta della retta di regressione utilizzando la procedura di Theil-Sen, ossia una regressione robusta progettata per fornire risultati più precisi e affidabili in presenza di valori outlier nei dati.
+
+nmail
+Pendenza: -0.0005973715651135006
+Intervallo di confidenza al 95%: [-0.0011248593925759281,0.0]
+Intercetta: 592.3936678614098
+
+byte rec
+Pendenza: -48.29360967184802
+Intervallo di confidenza al 95%: [-77.54773269689737,-18.993146773272414]
+Intercetta: 20890131.991364423
+
+byte sent
+Pendenza: -34.06305208650625
+Intervallo di confidenza al 95%: [-50.672672672672675,-17.374087591240876]
+Intercetta: 19903064.10051782
+
+Nel caso di nmail l'intervallo di confidenza al 95% relativo alla pendenza della retta di regressione include lo zero dunque la pendenza relativa al modello della popolazione ha una probabilità del 95% che sia significativamente uguale a zero.

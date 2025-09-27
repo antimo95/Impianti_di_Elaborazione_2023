@@ -1,0 +1,7 @@
+Portatile 1:
+
+i5-5200U 2.2GHz  | 2 core | 4 thread | 4 GB RAM  |  Windows 10 Home 22H2
+
+Portatile 2:
+
+i7-3537U 2.5GHz  | 2 core | 4 thread | 12 GB RAM |  Windows 10 Education 22H2

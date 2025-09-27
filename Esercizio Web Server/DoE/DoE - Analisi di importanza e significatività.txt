@@ -1,0 +1,40 @@
+Doe - Analisi di importanza e significatività
+
+su JMP si è andati a stimare il modello dato dai risultati (due fattori con 2 e 4 livelli rispettivamente e 5 ripetizioni su un totale di 2 * 4 * 5 = 40 righe).
+
+Possiamo vedere il grafico della relazione tra risposte osservate e risposte previste.
+Dall'analisi della varianza si vede che il modello spiega il 99% della varianza.
+
+Varianza modello/Varianza totale = 12848522/12952316 = 99.19%
+Varianza errore/Varianza totale = 103794/12952316 = 0.80%
+
+IMPORTANZA
+
+Per calcolare l'importanza si guarda la tabella del test degli effetti e le varie somme dei quadrati.
+
+SStotale = SSresponserate + SStype + SSresponserate*type = 1694892.4 + 6462545.8 + 4691083.8 = 12848522
+
+SSresponserate/SStotale = 1694892.4/12848522 = 13.19%
+
+SStype/SStotale = 50.29%
+
+SSresponserate*type/SStotale = 4691083.8/12848522 = 36.5%
+
+Come si evince il fattore più importante è type che spiega il 50% della varianza mentre gli altri due spiegano rispettivamente il 13% e il 36%
+
+SIGNIFICATIVITA'
+
+Per valutare la significatività dei fattori sarà necessario determinare il tipo di ANOVA (ANalisys Of VAriance). Si andranno a valutare le condizioni di normalità dei residui e l'omoschedasticità.Graz
+
+Da fit model si possono calcolare i residui e salvarli in colonna.
+
+Per valutare la normalità si può utilizzare un test visivo: si va a visionare la distribuzione dei residui e il QQ plot, si nota subito che i punti sono fuori alle curve di normalità. Per avere una conferma si può utilizzare il test di Shapiro-Wilk che presenterà un p-value basso e rigetterà l'ipotesi di normalità. 
+
+Per l'omoschedasticità si può guardare un trend plottando i residui con i previsti; per conferma si fitta il response time per ogni fattore. Cliccando sull'analisi a una via si può vedere il test di O'Brien che darà p-value bassi di conseguenza i dati non sono omoschedastici.
+
+Dalla stessa schermata si può generare un test non parametrico, nel nostro caso utilizziamo il test di Wilcoxon per verificare la significatività che è dimostrata nel caso di type ma non dimostrata nel caso di request rate.
+
+RISULTATI FINALI
+
+Si può dire che il fattore type è IMPORTANTE E SIGNIFICATIVO mentre il fattore request rate è NON IMPORTANTE e NON SIGNIFICATIVO. 
+Il fattore requestRate*type si può ritenere RELATIVAMENTE IMPORTANTE.

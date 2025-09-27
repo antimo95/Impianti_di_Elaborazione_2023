@@ -1,0 +1,63 @@
+Esercizio 4 su os2:
+
+Fit group su LIN2_VmSize, LIN2_VmData, LIN2_RSS, LIN1_byte_letti__sec e LIN1_byte_scritti__sec: si fa un linear fit su tutte le variabili e si guarda l'R-quadro.
+
+L'R-quadro misura il legame tra la variabilità dei dati e la correttezza del modello statistico utilizzato. Nel nostro caso si può notare (anche visivamente) che la correttezza è bassa e quindi il modello regressivo si adatta poco ai dati. Tuttavia si vuole utilizzare il modello per fare trend detection dunque anche un piccolo R-quadro è sufficiente. Occorre però verificare la significatività dei parametri della retta regressiva tramite un test statistico.
+
+SCREEN DEL GROUP FIT 
+
+R-quadro per LIN2_VmSize: 0.693318
+R-quadro per LIN2_VmData: 0.693318
+R-quadro per LIN2_RSS: 0.033845
+R-quadro per LIN2_byte_letti__sec: 0.760394
+R-quadro per LIN2_byte_scritti__sec: 0.000238
+
+Per scegliere il test bisogna valutare la distribuzione dei residui delle singole variabili. L'ipotesi di normalità dei residui implica che le differenze tra i valori previsti dal modello e i valori osservati nei dati seguano una distribuzione normale. Se non è così si utilizza un test non parametrico, ossia Mann-Kendall.
+
+SCREEN DEI QQPLOT
+
+Possiamo vedere che le distribuzioni non sono normali quindi automaticamente si può applicare un test non parametrico (Mann-Kendall).
+Il test calcola il coefficiente di correlazione t (tau) con valori che vanno da -1 e 1 e un p-value. Se il valore di t è negativo indica che le variabili sono inversamente correlate, se è positivo allora c'è una diretta proporzionalità. L'ipotesi nulla:
+
+H0: non è presente un trend monotono nella distribuzione
+
+Se il p-value è <= 0.05 significa che il risultato è statisticamente significativo per l'analisi pertanto l'ipotesi è rigettata.
+
+SCREEN TEST DI KENDALL
+
+LIN2_VmSize -> t:0.7065 p: 0.0001 TREND PROPORZIONALE
+LIN2_VmData -> t:0.7065 p: 0.0001 TREND PROPORZIONALE
+LIN2_RSS -> t:0.1788 p: 0.0001 TREND PROPORZIONALE
+LIN2_byte_letti__sec -> t:0.6259 p: 0.0001 TREND PROPORZIONALE
+LIN2_byte_letti__sec -> t:-0.0210 p: 0.0342 TREND INVERSAMENTE PROPORZIONALE
+
+Infine di può calcolare la pendenza e l'intercetta della retta di regressione utilizzando la procedura di Theil-Sen, ossia una regressione robusta progettata per fornire risultati più precisi e affidabili in presenza di valori outlier nei dati.
+
+LIN2_VmSize
+Pendenza: 0.0019128745423298214
+Intervallo di confidenza al 95%: [0.0,0.002085369827305311]
+Intercetta: 735790.3761488455
+
+LIN2_VmData
+Pendenza: 0.0019128745423298214
+Intervallo di confidenza al 95%: [0.0,0.002085369827305311]
+Intercetta: 667414.3761488455
+
+LIN2_RSS
+Pendenza: 0.0006324666198172874
+Intervallo di confidenza al 95%: [0.0005555555555555556,0.0007445442875481386]
+Intercetta: 42384.85453267744
+
+LIN2_byte_letti__sec
+Pendenza: 114.55350983796296
+Intervallo di confidenza al 95%: [112.73359327217125,116.37659764826176]
+Intercetta: 77733384.23784722
+
+LIN2_byte_scritti__sec
+Pendenza: -0.48861262488646684
+Intervallo di confidenza al 95%: [-0.9390005359056806,-0.036319163292847505]
+Intercetta: 65693615.57629428
+
+Per le ultime tre variabili gli intervalli di confidenza al 95% relativi alle pendenze delle rette di regressione non includono lo zero dunque le pendenza relative al modello della popolazione hanno una probabilità del 95% che non siano significativamente uguali a zero. Per i primi due, vmsize e vmdata, non valgono le precedenti considerazioni.
+
+LE PRIME TRE VARIABILI NON SEGUONO LE ASSUNZIONI, LE ULTIME DUE SONO NORMALI E OMOSCHEDASTICHE

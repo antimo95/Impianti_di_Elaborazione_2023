@@ -1,0 +1,20 @@
+Parametri Test JMeter
+
+Parametri Capacity test:
+
+Thread Group: 1
+Number of Threads: 30
+Ramp-up period: 30 s
+Duration: 300 s
+CTT: 500 - 800 - 1000 - 1200 - 1300 - 1500 - 1800 - 2000 - 4000 - 8000 - 10000 (in samples for minute)
+Resources: 100KB - 300KB SMALL 750KB - 1000KB MEDIUM 1500KB - 2000KB LARGE
+
+Parametri workload characterization
+
+Thread group: 1
+Number of Threads: 30
+Ramp-up period: 30 s
+Duration: 300 s
+CTT: 1000 (in samples for minute)
+Resources: from 50KB to 650KB SMALL - from 700KB to 1300KB MEDIUM - from 1350KB to 2000KB LARGE
+

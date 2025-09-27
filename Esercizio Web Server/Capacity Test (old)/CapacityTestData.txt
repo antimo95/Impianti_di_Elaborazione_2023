@@ -1,0 +1,24 @@
+Specifiche Macchina Virtuale
+
+20 gb di memoria
+2 gb di ram 
+2 core 3.8GHz
+
+Specifiche Computer Host 
+
+16 Gb di RAM 3600MHz
+CPU AMD 5800X 5.8GHz 
+500 GB SSD NVME 4.0 
+
+------------------------------------
+
+Throughput testing 
+
+240 Thread | 0 Rump-up | Duration: 300s | Random Controller | Loop Count : Infinite 
+
+Dimensioni pagine
+
+100-150-250-300 KB SMALL
+500-750-1000 KB MEDIUM
+1250-1500-2000 KB LARGE
+
