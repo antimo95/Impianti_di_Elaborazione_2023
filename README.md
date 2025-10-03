@@ -7,7 +7,7 @@
 ![OS](https://img.shields.io/badge/OS-Linux%20%7C%20Windows-green)
 
 ## 📌 Project Overview
-This project explores **performance evaluation and reliability analysis** in computer systems, developed as part of the *Impianti di Elaborazione* course.  
+This project explores **performance evaluation and reliability analysis** in computer systems.  
 It is divided into multiple phases, each focusing on benchmarking, workload characterization, web server analysis, dependability, and regression.
 
 ---
